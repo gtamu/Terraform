@@ -2,7 +2,7 @@
 
 
 1. Bastion host is created in a public subnet in us-east-2a AZ.
-2. Two webservers are created in a private subnet in us-east-2b and us-east-2c AZs.
+2. Two webservers are created in a private subnet using autoscaling-group in us-east-2b and us-east-2c AZs.
 3. Two webservers from above can get to outside world through NAT gateway created in public subnet in us-east-2a AZ.
 4. Two public subnets are also created in us-east-2b and us-east-2c AZs.
 5. Application Load Balancer is created in public subnets from step 4 and is tied to web servers from step 2 above.
