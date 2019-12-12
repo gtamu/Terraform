@@ -1,4 +1,4 @@
-# Terraform code to build VPC with Application Load Balancer in Public subnet and its target Web servers in Private Subnet.
+# Terraform code to build AWS VPC with Application Load Balancer in Public subnet and its target Web servers in Private Subnet.
 
 
 1. Bastion host is created in a public subnet in us-east-2a AZ.
