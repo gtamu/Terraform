@@ -20,8 +20,11 @@ resource "aws_route_table_association" "myextroutetableassoc" {
 
 resource "aws_route_table_association" "myextroutetableassoc_lb" {
 
-  count          = "${length(aws_subnet.my_pub_subnet_lb)}"
-  subnet_id      = "${aws_subnet.my_pub_subnet_lb.*.id[count.index]}"
+  #count          = "${length(aws_subnet.my_pub_subnet_lb.*.id)}"
+  #count           = 2
+  count = "${length(data.aws_availability_zones.myazs.names)}"
+  #subnet_id     = "${aws_subnet.my_pub_subnet_lb.*.id[count.index]}"
+  subnet_id      = "${element(aws_subnet.my_pub_subnet_lb.*.id, count.index)}" 
   route_table_id = "${aws_route_table.external_route_table.id}"
 }
 
@@ -40,8 +43,12 @@ resource "aws_route_table" "internal_route_table" {
 }
 
 resource "aws_route_table_association" "myinternalroutetableassoc" {
-  count          = "${length(aws_subnet.my_priv_subnet)}"
-  subnet_id      = "${aws_subnet.my_priv_subnet.*.id[count.index]}"
+  #count          = "${length(aws_subnet.my_priv_subnet.*.id)}"
+  #count          = 2
+  count = "${length(data.aws_availability_zones.myazs.names)}" 
+  
+  #subnet_id      = "${aws_subnet.my_priv_subnet.*.id[count.index]}"
+  subnet_id      = "${element(aws_subnet.my_priv_subnet.*.id, count.index)}"
   route_table_id = "${aws_route_table.internal_route_table.id}"
 }
 

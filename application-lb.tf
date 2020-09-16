@@ -5,7 +5,7 @@ resource "aws_lb" "myALB" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.my_lb_sg.id}"]
-  subnets            = "${aws_subnet.my_pub_subnet_lb.*.id}"
+  subnets            = ["${aws_subnet.my_pub_subnet_lb.*.id}"]
 
 }
 
