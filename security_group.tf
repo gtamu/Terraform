@@ -85,6 +85,21 @@ resource "aws_security_group" "my_instance_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  # Below egress gives outbound port 80 access to the world to download the package.
+  ingress {
+    from_port       = 443
+    to_port         = 443
+    protocol        = "TCP"
+    security_groups = ["${aws_security_group.my_bastion_sg.id}", "${aws_security_group.my_lb_sg.id}"]
+  }
+
+  egress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   # Allow SSH only from the Security Group which bastion host is associated with
 
   ingress {
