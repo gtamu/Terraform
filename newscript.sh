@@ -109,4 +109,4 @@ require {
 allow mongod_t cgroup_t:dir search;
 allow mongod_t cgroup_t:file { getattr open read };
 EOF
-sudo systemctl status mongod
+sudo systemctl start mongod
