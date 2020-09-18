@@ -9,7 +9,7 @@ resource "aws_instance" "bastion" {
 
   tags = {
 
-    Name = "Bastion-host"
+    Name = "Gtest-Bastion-host"
   }
 
   depends_on = ["aws_internet_gateway.my_ig"]

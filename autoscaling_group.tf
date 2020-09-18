@@ -12,7 +12,7 @@ resource "aws_autoscaling_group" "test_autoscale_group" {
    
    tag {
     key                 = "Name"
-    value               = "OpsMgr"
+    value               = "Gtest-OpsMgr"
     propagate_at_launch = true
   }
 

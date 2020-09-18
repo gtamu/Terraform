@@ -24,9 +24,9 @@ variable "pub_cidr_block_lb" {
 }
 
 variable "image_id" {
-  default = "ami-0868ae07486c87d15"
+  default = "ami-02659f5ed9a07e3b2"
 }
 
 variable "instance_type" {
-  default = "t2.micro"
+  default = "m5a.xlarge"
 }

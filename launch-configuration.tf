@@ -4,7 +4,7 @@ resource "aws_launch_configuration" "my_launch_conf" {
   image_id        = "${var.image_id}"
   instance_type   = "${var.instance_type}"
   security_groups = ["${aws_security_group.my_instance_sg.id}"]
-  user_data       = "${file("testscript.sh")}"
+  
   key_name        = "keyp-usw2-cops"
 
   ebs_block_device {
@@ -21,7 +21,20 @@ resource "aws_launch_configuration" "my_launch_conf" {
 
   }
 
-  lifecycle {
+#   provisioner "file" {
+#     source      = "testscript.sh"
+#     destination = "/tmp/testscript.sh"
+#   }
+
+#   provisioner "remote-exec" {
+#     inline = [
+#       "chmod +x /tmp/testscript.sh",
+#       "/tmp/testscript.sh",
+#     ]
+#   }
+# }
+user_data       = "${file("newscript.sh")}"
+lifecycle {
     create_before_destroy = true
   }
 }
