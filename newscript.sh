@@ -14,7 +14,7 @@ grep -q /dev/nvme2n1  /etc/fstab || echo "/dev/nvme2n1      /backup          xfs
 ## verifier 1
 grep -q 'vm.zone_reclaim_mode' /etc/sysctl.conf || echo "vm.zone_reclaim_mode=0" | sudo tee --append /etc/sysctl.conf
 ## verifier 2
-`grep   "vm.zone_reclaim_mode=0" /etc/sysctl.conf || echo "Incorrect value for Zone Reclaim Mode"
+grep   "vm.zone_reclaim_mode=0" /etc/sysctl.conf || echo "Incorrect value for Zone Reclaim Mode"
 ## change NUMA setting if not already configured correctly
 sudo sysctl -w  vm.zone_reclaim_mode=0
 ## verifier 2
@@ -109,3 +109,4 @@ require {
 allow mongod_t cgroup_t:dir search;
 allow mongod_t cgroup_t:file { getattr open read };
 EOF
+sudo systemctl status mongod
